@@ -3,51 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hunjara Linux | Modern & Minimal</title>
+    <title>Hunjara Linux | Modern & Minimalista</title>
     <style>
+        :root {
+            --primary: #00cc66; 
+            --bg: #0a0a0a;
+            --card-bg: #141414;
+            --text: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --accent: #1a3a2a;
+        }
+
         body {
-            background-color: #1a1a1a;
-            color: #eeeeee;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
             margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            background: radial-gradient(circle at center, var(--accent) 0%, var(--bg) 100%);
             text-align: center;
+            padding: 20px;
         }
-        .container { max-width: 800px; padding: 20px; }
-        h1 { color: #00cc66; font-size: 3rem; margin-bottom: 10px; }
-        p { font-size: 1.2rem; line-height: 1.6; color: #bbbbbb; }
-        .btn {
-            display: inline-block;
-            background-color: #00cc66;
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 20px;
+
+        h1 {
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            margin: 0;
+            letter-spacing: -3px;
+            background: linear-gradient(to right, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline { font-size: 1.5rem; color: var(--text-dim); margin-bottom: 30px; font-weight: 300; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+        }
+
+        /* Kártya stílus az alapelveknek */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #222;
             transition: 0.3s;
         }
-        .btn:hover { background-color: #00994d; }
-        .features { display: flex; gap: 20px; margin-top: 40px; }
-        .card { background: #252525; padding: 15px; border-radius: 8px; flex: 1; border: 1px solid #333; }
+
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card h3 { color: var(--primary); margin-top: 0; }
+
+        /* Név jelentése rész */
+        .highlight-box {
+            background: linear-gradient(45deg, var(--card-bg), var(--accent));
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 1px solid #333;
+        }
+
+        /* Ütemterv / Roadmap */
+        .roadmap-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary);
+        }
+        .roadmap-status { font-weight: bold; color: var(--primary); min-width: 100px; }
+
+        /* Terminál */
+        .terminal {
+            background: #000;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        code { color: var(--primary); }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: black;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 204, 102, 0.3);
+        }
+
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 204, 102, 0.5); }
+
+        footer { text-align: center; padding: 60px; color: var(--text-dim); border-top: 1px solid #222; margin-top: 100px; }
     </style>
 </head>
 <body>
+
+    <section class="hero">
+        <h1>HUNJARA</h1>
+        <p class="tagline">Tisztaság • Sebesség • Modernitás</p>
+        <div style="display: flex; gap: 15px;">
+            <a href="#about" class="btn">Ismerd meg</a>
+            <a href="#repo" class="btn" style="background: transparent; color: white; border: 1px solid white;">Telepítés</a>
+        </div>
+    </section>
+
     <div class="container">
-        <h1>HUNJARA LINUX</h1>
-        <p>A modern, magyar fejlesztésű Manjaro-alapú disztribúció Limine bootloaderrel és sallangmentes KDE Plasma felülettel.</p>
         
-        <div class="features">
-            <div class="card"><h3>Minimal</h3><p>Nincs bloatware, csak ami kell.</p></div>
-            <div class="card"><h3>Gyors</h3><p>Limine-alapú villámgyors boot.</p></div>
-            <div class="card"><h3>Magyar</h3><p>Hazai igényekre szabva.</p></div>
+        <div id="about" class="highlight-box">
+            <h2>Miért Hunjara?</h2>
+            <p>A név a <b>Hun</b> (magyar identitás) és a Man<b>jaro</b> (technológiai alap) ötvözete. A Hunjara nem csupán egy újabb kinézet: ez egy technikailag modern, bloat-mentes és profi módon kezelt disztribúció, amely szakít a hagyományos megoldásokkal ott, ahol a hatékonyság azt megkívánja.</p>
         </div>
 
-        <a href="https://github.com/hunjara/hunjara-repo" class="btn">GitHub Repozitórium</a>
+        <h2 class="section-title">Az Elképzelés</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Bloat-mentesség</h3>
+                <p>Csak a legszükségesebb KDE Plasma alapcsomagok. Nincs felesleges irodai csomag vagy előre telepített szoftver-szemét.</p>
+            </div>
+            <div class="card">
+                <h3>Modern Boot</h3>
+                <p>A GRUB helyett a <b>Limine</b> bootloaderre építünk: gyorsabb indítás, egyszerűbb és szebb grafikai felület.</p>
+            </div>
+            <div class="card">
+                <h3>Saját Ökoszisztéma</h3>
+                <p>Minden módosítást saját csomagokba (.pkg.tar.zst) szervezünk, melyeket a Hunjara GitHub tárolója kezel.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Roadmap</h2>
+        <div class="card" style="margin-bottom: 60px;">
+            <div class="roadmap-item">
+                <span class="roadmap-status">[KÉSZ]</span>
+                <div><b>Infrastruktúra:</b> GitHub profil és bináris repo felállítása.</div>
+            </div>
+            <div class="roadmap-item">
+                <span class="roadmap-status">[FOLYAMAT]</span>
+                <div><b>Hunjara-Manager:</b> Automata Limine kernel-hookok fejlesztése.</div>
+            </div>
+            <div class="roadmap-item" style="opacity: 0.6;">
+                <span class="roadmap-status">[TERV]</span>
+                <div><b>Béta ISO:</b> Az első telepíthető minimalista lemezkép kiadása.</div>
+            </div>
+        </div>
+
+        <section id="repo">
+            <h2 class="section-title">Hunjara Repository</h2>
+            <p>A Hunjara specifikus eszközök (branding, limine-manager, hookok) elérése meglévő Manjaro rendszeren:</p>
+            
+            <div class="terminal">
+                <code># Nyisd meg a konfigurációt:<br>
+                sudo nano /etc/pacman.conf<br><br>
+                # Illeszd a végére:<br>
+                [hunjara]<br>
+                SigLevel = Optional TrustAll<br>
+                Server = https://hunjara.github.io/hunjara-repo/x86_64</code>
+            </div>
+        </section>
+
     </div>
+
+    <footer>
+        <p>&copy; 2025 Hunjara Linux Project<br>Szenvedéllyel fejlesztve Magyarországon.</p>
+    </footer>
+
 </body>
 </html>
